@@ -11,7 +11,21 @@ package com.cfd.mensajes_app;
 public class MensajesDAO {
     //DAO: Data Access Object
     //Aqui se va tener los metodos que van permitir la conexion con la base de datos
-    
-    
-    
+
+    //metodo para crear todos los mensajes
+    public static void crearMensajeDB(MensajesModel mensaje) {
+
+    }
+
+    //metodo para leer todos los mensajes
+    public static void leerMensaje() {
+    }
+
+    //metodo para eliminar todos los mensajes
+    public static void borrarMensaje(int id_mensaaje) {
+    }
+
+    //metodo para leer todos los mensajes
+    public static void actualizarMensaje(MensajesModel mensajesModel) {
+    }
 }

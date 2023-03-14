@@ -11,5 +11,14 @@ package com.cfd.mensajes_app;
 public class MensajesService {
     
     //Capa itnermedia entre el menu  principal y la capa de acceso
+ 
     
+    public static void crearMensaje(){
+    }
+    public static void listarMensajes(){
+    }
+    public static void borrarMensaje(){
+    }
+    public static void editarMensaje(){
+    }
 }

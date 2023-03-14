@@ -16,9 +16,9 @@ public class Conexion {
         Connection conection = null;
         try {
             conection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mensajesapp", "postgres", "12345");
-            if (conection != null) {
-                System.out.println("conexion exitosa");
-            }
+//            if (conection != null) {
+//                System.out.println("conexion exitosa");
+//            }
         } catch (Exception e) {
             System.out.println(e);
         }
