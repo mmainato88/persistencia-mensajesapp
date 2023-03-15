@@ -69,10 +69,49 @@ public class MensajesDAO {
     }
 
     //metodo para eliminar todos los mensajes
-    public static void borrarMensaje(int id_mensaaje) {
+    public static void borrarMensaje(int id_mensaje) {
+        Conexion db_connect = new Conexion();
+        
+        try(Connection conexion = db_connect.get_conecction())  {
+        PreparedStatement ps=null;
+        
+            try {
+                String query="DELETE FROM mensajes WHERE id_mensaje = ?";
+                ps=conexion.prepareStatement(query);
+                ps.setInt(1, id_mensaje);
+                ps.executeUpdate();
+                System.out.println("el mensaje ha sido borrado");
+            }catch(SQLException e) {
+                System.out.println(e);
+                 System.out.println("no se pudo borrar el mensaje");
+            }
+        
+            
+        }catch(SQLException e){
+            System.out.println(e);
+        }
     }
 
     //metodo para leer todos los mensajes
-    public static void actualizarMensaje(MensajesModel mensajesModel) {
+    public static void actualizarMensaje(MensajesModel mensaje) {
+        Conexion db_connect = new Conexion();
+        
+        try(Connection conexion = db_connect.get_conecction())  { 
+        PreparedStatement ps=null;
+        
+            try{ 
+                String query="UPDATE mensajes SET mensaje = ? WHERE id_mensaje = ?";
+                ps=conexion.prepareStatement(query);
+                ps.setString(1, mensaje.getMensaje());
+                ps.setInt(2, mensaje.getId_mensaje());
+                ps.executeUpdate();
+                System.out.println("mensaje se actualizó correctamente");
+            }catch(SQLException ex){ 
+                System.out.println(ex);
+                System.out.println("no se pudo actualizar el mensaje");
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
     }
 }
