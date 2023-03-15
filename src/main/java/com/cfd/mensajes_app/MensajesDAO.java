@@ -4,6 +4,10 @@
  */
 package com.cfd.mensajes_app;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  *
  * @author mmainato88
@@ -14,6 +18,26 @@ public class MensajesDAO {
 
     //metodo para crear todos los mensajes
     public static void crearMensajeDB(MensajesModel mensaje) {
+        Conexion db_connect = new Conexion();
+        try ( Connection conexion = db_connect.get_conecction()) {
+            PreparedStatement ps = null;
+            try {
+                // String query = "INSERT INTO mensajes ( mensaje, autor_mensaje) VALUES (?,?)";
+                String query = "insert into mensajes (mensaje, autor_mensaje) values (?,?);";
+                ps = conexion.prepareStatement(query);
+               // ps.setInt(1, mensaje.getId_mensaje());
+                ps.setString(1, mensaje.getMensaje());
+                ps.setString(2, mensaje.getAutor_mensaje());
+                //ps.setString(4, mensaje.getFecha_mensaje());
+                ps.executeUpdate();
+                System.out.println("mensaje nuevo agregado");
+
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
 
     }
 
